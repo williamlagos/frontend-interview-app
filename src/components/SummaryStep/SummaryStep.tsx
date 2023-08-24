@@ -2,17 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 interface SummaryStepProps {
-  collectedData: {
-    email: string
-    age: number
-  }
+  collectedData: Record<string, any>
 }
 
 const SummaryStep: React.FC<SummaryStepProps> = (props) => {
   return (
     <>
-      <div>Email: {props.collectedData.email}</div>
-      <div>Age: {props.collectedData.age}</div>
+      {Object.entries(props.collectedData).map(([label, value]) => (
+        <div key={label}>{label}: {value}</div>
+      ))}
       <div>
         <Link to="/purchased=dev_ins">Purchase</Link>
       </div>

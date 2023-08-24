@@ -16,10 +16,7 @@ const PRODUCT_IDS_TO_NAMES = {
 
 const Buyflow: React.FC<BuyflowProps> = (props) => {
   const [stepNumber, setStepNumber] = useState(0)
-  const [collectedData, updateData] = useState({
-    email: '',
-    age: 0,
-  })
+  const [collectedData, updateData] = useState<Record<string, any>>({})
   const getStepCallback = () => (field: string, value: any) => {
     updateData({ ...collectedData, [field]: value })
     setStepNumber(currentStepNumber => currentStepNumber + 1)

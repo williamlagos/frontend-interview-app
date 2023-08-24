@@ -21,7 +21,7 @@ const InputStep: React.FC<InputStepProps> = (props) => {
           type={props.type}
         ></input>
       </div>
-      <button onClick={() => props.cb(props.slug, inputValue)}>Next</button>
+      <button onClick={() => props.cb(props.label, inputValue)}>Next</button>
     </>
   )
 }
