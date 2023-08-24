@@ -8,10 +8,12 @@ interface BuyflowProps {
 
 export enum ProductIds {
   devIns = 'dev_ins',
+  desIns = 'des_ins',
 }
 
 const PRODUCT_IDS_TO_NAMES = {
   [ProductIds.devIns]: 'Developer Insurance',
+  [ProductIds.desIns]: 'Designer Insurance',
 }
 
 const Buyflow: React.FC<BuyflowProps> = (props) => {
@@ -26,7 +28,7 @@ const Buyflow: React.FC<BuyflowProps> = (props) => {
     <>
       <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
       {currentStep ? (
-        currentStep.entries ? (
+        currentStep.type === 'multiple' ? (
           <MultipleInputStep 
             slug={currentStep.slug}
             type={currentStep.type}

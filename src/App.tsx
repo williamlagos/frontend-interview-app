@@ -5,6 +5,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Buyflow, { ProductIds } from './pages/Buyflow'
 
 const App = () => {
+  const commonSteps = [{
+    slug: 'email',
+    type: 'email',
+    label: 'E-mail'
+  }, {
+    slug: 'age',
+    type: 'number',
+    label: 'Age'
+  }]
   return (
     <Router>
       <div className="App">
@@ -12,18 +21,10 @@ const App = () => {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <Switch>
-          <Route path="/buy/insurance_dev">
+          <Route path="/buy/insurance_des">
             <Buyflow 
-              productId={ProductIds.devIns} 
-              steps={[{
-                slug: 'email',
-                type: 'email',
-                label: 'E-mail'
-              }, {
-                slug: 'age',
-                type: 'number',
-                label: 'Age'
-              }, {
+              productId={ProductIds.desIns} 
+              steps={[...commonSteps, {
                 slug: 'name',
                 type: 'multiple',
                 label: 'Name',
@@ -37,13 +38,19 @@ const App = () => {
                     label: 'Last Name'
                   }
                 }
-              }
-              ]}
+              }]}
+            />
+          </Route>
+          <Route path="/buy/insurance_dev">
+            <Buyflow 
+              productId={ProductIds.devIns} 
+              steps={[...commonSteps]}
             />
           </Route>
           <Route path="/">
-            <p>Welcome to Getsafe's Developer Insurance</p>
-            <Link to="/buy/insurance_dev">Get started!</Link>
+            <p>Welcome to Getsafe's Insurance Portal</p>
+            <div><Link to="/buy/insurance_dev">Get started with Developer Insurance!</Link></div>
+            <div><Link to="/buy/insurance_des">Get started with Designer Insurance!</Link></div>
           </Route>
         </Switch>
       </div>
