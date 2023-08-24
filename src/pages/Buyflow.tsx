@@ -3,7 +3,7 @@ import { AgeStep, EmailStep, SummaryStep } from '../components/'
 
 interface BuyflowProps {
   productId: ProductIds
-  steps: Array<string>
+  steps: Array<any>
 }
 
 export enum ProductIds {
@@ -28,13 +28,12 @@ const Buyflow: React.FC<BuyflowProps> = (props) => {
   return (
     <>
       <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
-      {(currentStep === 'email' && <EmailStep cb={getStepCallback()} />) ||
-        (currentStep === 'age' && (
-          <AgeStep cb={getStepCallback()} />
-        )) ||
-        (currentStep === 'summary' && (
-          <SummaryStep collectedData={collectedData} />
-        ))}
+      {currentStep ? (
+        (currentStep.slug === 'email' && <EmailStep cb={getStepCallback()} />) ||
+        (currentStep.slug === 'age' && <AgeStep cb={getStepCallback()} />) 
+      ) : ( 
+        <SummaryStep collectedData={collectedData} />
+      )}
     </>
   )
 }

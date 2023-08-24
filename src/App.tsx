@@ -15,7 +15,15 @@ const App = () => {
           <Route path="/buy/insurance_dev">
             <Buyflow 
               productId={ProductIds.devIns} 
-              steps={['email', 'age', 'summary']}
+              steps={[{
+                slug: 'email',
+                type: 'email',
+                label: 'E-mail'
+              }, {
+                slug: 'age',
+                type: 'number',
+                label: 'Age'
+              }]}
             />
           </Route>
           <Route path="/">
