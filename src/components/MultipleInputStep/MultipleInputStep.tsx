@@ -17,7 +17,7 @@ const MultipleInputStep: React.FC<MultipleInputStepProps> = (props) => {
           <div key={slug}>
             {`${input.label}: `}
             <input 
-              onChange={({ target: { value } }) => {
+              onChange={({ target: {value} }) => {
                 setInputValue({ ...inputValue, [input.label]: value })
               }}
               type={input.type}
