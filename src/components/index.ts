@@ -1,5 +1,4 @@
-import AgeStep from "./AgeStep/AgeStep"
-import EmailStep from "./EmailStep/EmailStep"
+import InputStep from "./InputStep/InputStep"
 import SummaryStep from "./SummaryStep/SummaryStep"
 
-export { AgeStep, EmailStep, SummaryStep }
+export { InputStep, SummaryStep }
