@@ -23,7 +23,22 @@ const App = () => {
                 slug: 'age',
                 type: 'number',
                 label: 'Age'
-              }]}
+              }, {
+                slug: 'name',
+                type: 'multiple',
+                label: 'Name',
+                entries: {
+                  'fname': {
+                    type: 'text',
+                    label: 'First Name'
+                  },
+                  'lname': {
+                    type: 'text',
+                    label: 'Last Name'
+                  }
+                }
+              }
+              ]}
             />
           </Route>
           <Route path="/">

@@ -15,11 +15,11 @@ const InputStep: React.FC<InputStepProps> = (props) => {
         {`${props.label}: `}
         <input
           onChange={({ target: { value } }) => {
-            setInputValue(props.type === 'number' ? Number(value) : value)
+            setInputValue(props.type === 'number' ? Number(value) : String(value))
           }}
           value={inputValue}
           type={props.type}
-        ></input>
+        />
       </div>
       <button onClick={() => props.cb(props.label, inputValue)}>Next</button>
     </>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputStep, SummaryStep } from '../components/'
+import { InputStep, MultipleInputStep, SummaryStep } from '../components/'
 
 interface BuyflowProps {
   productId: ProductIds
@@ -26,12 +26,22 @@ const Buyflow: React.FC<BuyflowProps> = (props) => {
     <>
       <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
       {currentStep ? (
-        <InputStep 
-          slug={currentStep.slug}
-          type={currentStep.type}
-          label={currentStep.label}
-          cb={getStepCallback()}
-        />
+        currentStep.entries ? (
+          <MultipleInputStep 
+            slug={currentStep.slug}
+            type={currentStep.type}
+            label={currentStep.label}
+            entries={currentStep.entries}
+            cb={getStepCallback()}
+          />
+        ) : (
+          <InputStep 
+            slug={currentStep.slug}
+            type={currentStep.type}
+            label={currentStep.label}
+            cb={getStepCallback()}
+          />
+        )
       ) : ( 
         <SummaryStep collectedData={collectedData} />
       )}
