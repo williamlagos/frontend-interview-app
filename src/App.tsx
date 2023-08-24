@@ -7,12 +7,20 @@ import Buyflow, { ProductIds } from './pages/Buyflow'
 const App = () => {
   const commonSteps = [{
     slug: 'email',
-    type: 'email',
-    label: 'E-mail'
+    entries: {
+      'email': {
+        type: 'email',
+        label: 'E-mail'
+      } 
+    }
   }, {
     slug: 'age',
-    type: 'number',
-    label: 'Age'
+    entries: {
+      'age': {
+        type: 'number',
+        label: 'Age'
+      }
+    }
   }]
   return (
     <Router>
@@ -26,8 +34,6 @@ const App = () => {
               productId={ProductIds.desIns} 
               steps={[...commonSteps, {
                 slug: 'name',
-                type: 'multiple',
-                label: 'Name',
                 entries: {
                   'fname': {
                     type: 'text',
