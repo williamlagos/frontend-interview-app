@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import AgeStep from './AgeStep'
-import EmailStep from './EmailStep'
-import SummaryStep from './SummaryStep'
+import { AgeStep, EmailStep, SummaryStep } from '../components/'
 
 interface BuyflowProps {
   productId: ProductIds
