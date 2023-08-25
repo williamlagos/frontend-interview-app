@@ -42,6 +42,8 @@ const InputStep: React.FC<InputStepProps> = (props) => {
               setValidationMsg('The name was filled with too few characters')
             } else if (isNaN(inputValue) && inputLabel === 'E-mail' && !validateEmail(String(inputValue))) {
               setValidationMsg('The field was filled with an invalid e-mail')
+            } else if (!isNaN(inputValue) && inputValue < 18) {
+              setValidationMsg('The age must be 18 or older')
             } else {
               props.cb(props.slug, inputValues)
               setValidationMsg('')
