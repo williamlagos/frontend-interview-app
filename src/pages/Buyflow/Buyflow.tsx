@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
 import { InputStep, SummaryStep } from '../../components'
+import { InputValues, Step } from '../../app/types'
 import { ProductIds } from '../../app/config'
 
 interface BuyflowProps {
   productId: ProductIds
-  steps: Array<any>
+  steps: Step[]
 }
 
 const PRODUCT_IDS_TO_NAMES = {
@@ -15,8 +16,8 @@ const PRODUCT_IDS_TO_NAMES = {
 
 const Buyflow: React.FC<BuyflowProps> = (props) => {
   const [stepNumber, setStepNumber] = useState(0)
-  const [collectedData, updateData] = useState<Record<string, any>>({})
-  const getStepCallback = () => (field: string, value: any) => {
+  const [collectedData, updateData] = useState<InputValues[]>([])
+  const getStepCallback = () => (field: string, value: InputValues) => {
     updateData({ ...collectedData, [field]: value })
     setStepNumber(currentStepNumber => currentStepNumber + 1)
   }

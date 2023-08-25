@@ -1,3 +1,5 @@
+import { InputValues } from "./types"
+
 const validateEmail = (email: string) => (
   !email.toLowerCase().match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -8,7 +10,7 @@ const validateName = (name: string) => name.length < 3 ? 'The name was filled wi
 
 const validateAge = (age: number) => age < 18 ? 'The age must be 18 or older' : ''
 
-export const validateValues = (inputValues: Record<string, any>, required: boolean): string => {
+export const validateValues = (inputValues: InputValues, required: boolean): string => {
   let value = ''
   const values = Object.values(inputValues)
   if (required && values.length === 0) {

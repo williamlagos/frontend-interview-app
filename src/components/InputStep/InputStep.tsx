@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 
 import { validateValues } from '../../app/validation'
+import { Entries, InputValues } from '../../app/types'
 
 interface InputStepProps {
-  cb: (field: string, value: Record<string, any>) => void
-  entries: Record<string, any>
+  cb: (field: string, value: InputValues) => void
+  entries: Entries
   required: boolean
   slug: string
 }
 
 const InputStep: React.FC<InputStepProps> = (props) => {
-  const [inputValues, setInputValues] = useState<Record<string, any>>({})
+  const [inputValues, setInputValues] = useState<InputValues>({})
   const [validationMsg, setValidationMsg] = useState<string>('')
   return (
     <>

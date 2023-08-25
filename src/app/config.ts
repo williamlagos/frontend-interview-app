@@ -1,9 +1,11 @@
+import { Step } from "./types"
+
 export enum ProductIds {
   devIns = 'dev_ins',
   desIns = 'des_ins',
 }
 
-export const commonSteps = [{
+export const commonSteps: Step[] = [{
   slug: 'email',
   required: true,
   entries: {
@@ -14,6 +16,7 @@ export const commonSteps = [{
   }
 }, {
   slug: 'age',
+  required: true,
   entries: {
     'age': {
       type: 'number',
@@ -22,7 +25,7 @@ export const commonSteps = [{
   }
 }]
 
-export const extraSteps = [{
+export const extraSteps: Step[] = [{
   slug: 'name',
   required: true,
   entries: {
