@@ -6,19 +6,12 @@ interface SummaryStepProps {
 }
 
 const SummaryStep: React.FC<SummaryStepProps> = (props) => {
+  const summaryData = Object.values(props.collectedData)
   return (
     <>
-      {Object.entries(props.collectedData).map(([label, value]) => (
-        typeof(value) !== "object" ? (
-          <div key={label}>{label}: {value}</div>
-        ) : (
-          Object.entries(value).map(([nestedLabel, nestedValue]) => (
-            <div key={nestedLabel}>{nestedLabel}: {nestedValue}</div>
-          ))
-        )
-      ))}
+      {summaryData.map((item) => Object.entries(item).map(([label, {value}]: any) => <div key={label}>{label}: {value}</div>))}
       <div>
-        <Link to="/purchased=dev_ins">Purchase</Link>
+        <Link to="/purchased=ins">Purchase</Link>
       </div>
     </>
   )

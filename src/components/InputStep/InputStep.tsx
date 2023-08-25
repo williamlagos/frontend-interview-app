@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 interface InputStepProps {
   cb: (field: string, value: Record<string, any>) => void
   entries: Record<string, any>
+  required: boolean
   slug: string
 }
 
@@ -25,7 +26,13 @@ const InputStep: React.FC<InputStepProps> = (props) => {
             {`${input.label}: `}
             <input 
               onChange={({ target: {value} }) => {
-                setInputValues({ ...inputValues, [input.label]: value })
+                setInputValues({ 
+                  ...inputValues, 
+                  [input.label]: {
+                    type: input.type,
+                    value
+                  }
+                })
               }}
               type={input.type}
             />
@@ -34,22 +41,35 @@ const InputStep: React.FC<InputStepProps> = (props) => {
       </div>
       <div style={{ color: "red" }}>{validationMsg}</div>
       <button onClick={() => {
-        if (Object.values(inputValues).length === 0) {
-          setValidationMsg('The field(s) is(are) empty')
+        let validation = ''
+        if (props.required && Object.values(inputValues).length === 0) {
+          validation = 'The field(s) is(are) empty'
         } else {
-          Object.entries(inputValues).forEach(([inputLabel, inputValue]) => {
-            if (isNaN(inputValue) && String(inputValue).length < 3) {
-              setValidationMsg('The name was filled with too few characters')
-            } else if (isNaN(inputValue) && inputLabel === 'E-mail' && !validateEmail(String(inputValue))) {
-              setValidationMsg('The field was filled with an invalid e-mail')
-            } else if (!isNaN(inputValue) && inputValue < 18) {
-              setValidationMsg('The age must be 18 or older')
-            } else {
-              props.cb(props.slug, inputValues)
-              setValidationMsg('')
-              setInputValues({}) 
+          Object.values(inputValues).forEach(({ type: inputType, value: inputValue }) => {
+            switch (inputType) {
+              case 'text':
+                if (isNaN(inputValue) && String(inputValue).length < 3) {
+                  validation = 'The name was filled with too few characters'
+                }
+                break
+              case 'email':
+                if (isNaN(inputValue) && !validateEmail(String(inputValue))) {
+                  validation = 'The field was filled with an invalid e-mail'
+                }
+                break
+              case 'number':
+                if (!isNaN(inputValue) && inputValue < 18) {
+                  validation = 'The age must be 18 or older'
+                }
             }
           })
+          if (validation.length === 0) {
+            props.cb(props.slug, inputValues)
+            setValidationMsg('')
+            setInputValues({}) 
+          } else {
+            setValidationMsg(validation)
+          }
         }
       }}>Next</button>
     </>

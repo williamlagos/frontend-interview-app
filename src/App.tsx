@@ -7,6 +7,7 @@ import Buyflow, { ProductIds } from './pages/Buyflow'
 const App = () => {
   const commonSteps = [{
     slug: 'email',
+    required: true,
     entries: {
       'email': {
         type: 'email',
@@ -34,6 +35,7 @@ const App = () => {
               productId={ProductIds.desIns} 
               steps={[...commonSteps, {
                 slug: 'name',
+                required: true,
                 entries: {
                   'fname': {
                     type: 'text',

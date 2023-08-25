@@ -29,6 +29,7 @@ const Buyflow: React.FC<BuyflowProps> = (props) => {
       <h4>Buying {PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
       {currentStep ? (
         <InputStep 
+          required={currentStep.required}
           entries={currentStep.entries}
           slug={currentStep.slug}
           cb={getStepCallback()}
