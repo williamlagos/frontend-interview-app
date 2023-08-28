@@ -27,8 +27,8 @@ const App = () => (
         </Route>
         <Route path="/">
           <p>Welcome to Getsafe's Insurance Portal</p>
-          <div><Link to="/buy/insurance_dev">Get started with Developer Insurance!</Link></div>
-          <div><Link to="/buy/insurance_des">Get started with Designer Insurance!</Link></div>
+          <div><Link data-cy="developer-start" to="/buy/insurance_dev">Get started with Developer Insurance!</Link></div>
+          <div><Link data-cy="designer-start" to="/buy/insurance_des">Get started with Designer Insurance!</Link></div>
         </Route>
       </Switch>
     </div>

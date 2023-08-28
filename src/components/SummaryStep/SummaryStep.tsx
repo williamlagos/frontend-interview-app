@@ -13,7 +13,7 @@ const SummaryStep: React.FC<SummaryStepProps> = (props) => {
     <>
       {summaryData.map((item) => Object.entries(item).map(([label, {value}]) => <div key={label}>{label}: {value}</div>))}
       <div>
-        <Link to="/purchased=ins">Purchase</Link>
+        <Link data-cy="purchase-end" to="/purchased=ins">Purchase</Link>
       </div>
     </>
   )
