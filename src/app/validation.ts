@@ -10,6 +10,11 @@ const validateName = (name: string) => name.length < 3 ? 'The name was filled wi
 
 const validateAge = (age: number) => age < 18 ? 'The age must be 18 or older' : ''
 
+/**
+ * Main validator function for every value in the step. A switch makes sure that a validator is called only when needed
+ * @param {InputValues} inputValues - data collected from the step, to be verified in this function
+ * @param {boolean} required - flag for checking or not for empty input on entries
+ */
 export const validateValues = (inputValues: InputValues, required: boolean): string => {
   let value = ''
   const values = Object.values(inputValues)

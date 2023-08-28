@@ -7,6 +7,10 @@ interface SummaryStepProps {
   collectedData: InputValues[]
 }
 
+/**
+ * Component that collects the data from all the other steps and then show before confirming the purchase
+ * @param {InputValues} collectedData - data collected from other steps, passed as props
+ */
 const SummaryStep: React.FC<SummaryStepProps> = (props) => {
   const summaryData = Object.values(props.collectedData)
   return (

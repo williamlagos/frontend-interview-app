@@ -10,6 +10,13 @@ interface InputStepProps {
   slug: string
 }
 
+/**
+ * Reusable component for creating custom steps with the proper entries
+ * @param callback - function to collect data with its proper label and data
+ * @param {Entries} entries - input entries with label, type and default value
+ * @param {boolean} required - flag for indicating if validators should be run
+ * @param {string} slug - identifier for the step
+ */
 const InputStep: React.FC<InputStepProps> = (props) => {
   const [inputValues, setInputValues] = useState<InputValues>({})
   const [validationMsg, setValidationMsg] = useState<string>('')
